@@ -11,6 +11,10 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+  <!-- PWA  -->
+  <meta name="theme-color" content="#6777ef"/>
+  <link rel="apple-touch-icon" href="{{ asset('cosmetic.png') }}">
+  <link rel="manifest" href="{{ asset('/manifest.json') }}">
   <link rel="shortcut icon" href="images/cosmetic.png" type="image/x-icon">
 
   <title>
@@ -27,6 +31,12 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
 </head>
 
 <body>
@@ -140,232 +150,87 @@
           Best Seller
         </h2>
       </div>
+      @php
+        $products = [
+            [
+                'name' => 'Pyungkang Yul Essence Toner',
+                'price' => 'Rp. 170.000',
+                'image' => 'images/pyungkang.png',
+                'tag' => 'Sale'
+            ],
+            [
+                'name' => 'Avoskin Miraculous Retinol Toner',
+                'price' => 'Rp. 205.000',
+                'image' => 'images/avo.png',
+                'tag' => '17%'
+            ],
+            [
+                'name' => 'Pure Paw Paw Ointment',
+                'price' => 'Rp. 65.000',
+                'image' => 'images/ppw.png',
+                'tag' => '15%'
+            ],
+            [
+                'name' => 'Azarine Hydrashoothe Sunscreen Gel Spf45+++',
+                'price' => 'Rp. 65.000',
+                'image' => 'images/ss.png',
+                'tag' => 'Best'
+            ],
+            [
+                'name' => 'Skintific 5X Ceramide Moisture Gel',
+                'price' => 'Rp. 119.000',
+                'image' => 'images/moist.png',
+                'tag' => 'Sale'
+            ],
+            [
+                'name' => 'Cetaphil Gentle Skin Cleanser',
+                'price' => 'Rp. 155.000',
+                'image' => 'images/fw.png',
+                'tag' => 'Sale'
+            ],
+            [
+                'name' => 'Somethinc Hooman Breathable UV Cushion Cover SPF 35 PA++++',
+                'price' => 'Rp. 188.000',
+                'image' => 'images/cushion.png',
+                'tag' => 'Sale'
+            ],
+            [
+                'name' => 'Make Over Powerstay Glazed Lock Lip Pigment',
+                'price' => 'Rp. 149.000',
+                'image' => 'images/lipen.png',
+                'tag' => 'Best'
+            ],
+        ];
+      @endphp
+
       <div class="row">
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/pyungkang.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Pyungkang Yul<br>Essence Toner
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 170.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  sale
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
+        @foreach ($products as $product)
+          <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+            <div class="box p-3 h-100">
+              <a href="#">
+                <div class="img-box" style="height: 180px;">
+                  <img src="{{ asset($product['image']) }}" alt="{{ $product['name'] }}" class="img-fluid" style="max-height: 100%; object-fit: contain;">
+                </div>
+
+                <div class="product-info mt-2">
+                  <h6 class="fw-semibold mb-2 text-elipsis w-100">{{ $product['name'] }}</h6>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="fw-bold mb-0" style="color: #db4f66;">{{ $product['price'] }}</h6>
+                    <a href="/checkout" class="btn btn-light border rounded-circle p-2">
+                      <i class="bi bi-cart3 fs-5 text-danger"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="new">
+                  <span>{{ $product['tag'] }}</span>
+                </div>
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/avo.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                Avoskin<br>Miraculous Retinol Toner
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 205.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  17%
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/ppw.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                  Pure Paw Paw <br> Ointment
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 65.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  15%
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/ss.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                Azarine<br>Hydrashoothe Sunscreen Gel Spf45+++
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    RP. 65.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  Best
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/fw.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                Cetaphil<br>Gentle Skin Cleanser
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 155.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  5%
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/moist.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                Skintific<br>5X Ceramide Barrier Moisture Gel
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 119.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  Sale
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/cushion.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                Somethinc<br>Hooman Breathable UV Cushion Cover SPF 35 PA++++
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 188.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  Sale
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="box">
-            <a href="">
-              <div class="img-box">
-                <img src="images/lipen.png" alt="">
-              </div>
-              <div class="detail-box">
-                <h6>
-                Make Over<br>Powerstay Glazed Lock Lip Pigment
-                </h6>
-                <h6>
-                  Price
-                  <span>
-                    Rp. 149.000
-                  </span>
-                </h6>
-              </div>
-              <div class="new">
-                <span>
-                  Best
-                </span>
-              </div>
-            </a>
-            <a href="/checkout">
-                Checkout
-             </a>
-          </div>
-        </div>
+        @endforeach
       </div>
+
       <div class="btn-box">
         <a href="">
           View All Products
@@ -472,6 +337,23 @@
   </script>
   <script src="js/custom.js"></script>
 
+  <script src="{{ asset('/sw.js') }}"></script>
+<script>
+   if ("serviceWorker" in navigator) {
+      // Register a service worker hosted at the root of the
+      // site using the default scope.
+      navigator.serviceWorker.register("/sw.js").then(
+      (registration) => {
+         console.log("Service worker registration succeeded:", registration);
+      },
+      (error) => {
+         console.error(`Service worker registration failed: ${error}`);
+      },
+    );
+  } else {
+     console.error("Service workers are not supported.");
+  }
+</script>
 </body>
 
 </html>
